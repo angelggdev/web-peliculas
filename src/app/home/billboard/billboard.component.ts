@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -8,6 +9,9 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class BillboardComponent implements OnInit {
 
+  movieList: Array<Movie>;
+  loading = true;
+
   constructor(
     private movieService: MovieService
   ) { }
@@ -15,7 +19,9 @@ export class BillboardComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getBillboardMovies().subscribe(
       (data) => {
-        console.log(data)
+        this.movieList = data.results;
+        this.loading = false;
+        console.log(this.movieList)
       }
     )
   }

@@ -13,12 +13,12 @@ export class MovieService {
   getBillboardMovies(): Observable<any>{
     return this.http.get(environment.apiUrl + 'movie/now_playing', { 
       params: new HttpParams().set(
-        "api_key", "b1343f8496a09f2dfdb1e6440a030a07"
+        "api_key", environment.api_key
         ).set(
           "language", "en-US"
         ).set(
           "page", 1
-        ),
+        )
     })
   }
 }

@@ -1,29 +1,64 @@
-<div style="display:flex; align-items: center; justify-content: center;">
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:50%;">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div style="display: flex; align-items: center; justify-content: center; height: 30vw;">
+  <div
+    *ngIf="!loading; else spinner"
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+    style="width: 50%"
+  >
+    <div 
+      class="carousel-indicators"
+    >
+      <button
+        *ngFor="let movie of movieList; let i = index; first as isFirst"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        [attr.data-bs-slide-to]="i"
+        [ngClass]="{'active': isFirst}"
+        class="active"
+        [attr.aria-current]="isFirst? true:false"
+      ></button>
+    </div>
+    <div 
+      class="carousel-inner"
+    >
+      <div 
+        class="carousel-item"
+        *ngFor="let movie of movieList; first as isFirst"
+        [ngClass]="{'active': isFirst }"
+        >
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" class="d-block w-100" [alt]="movie.title" />
+        <div 
+          class="carousel-caption d-md-block"
+          [ngClass]="{'d-none': !isFirst}"
+          >
+          <h5>{{movie.title}}</h5>
+          <p>{{movie.overview}}</p>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../../assets/movie-1.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="../../assets/movie-2.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="../../assets/movie-3.jpg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <ng-template #spinner>
+    <div class="spinner-grow" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
 </div>
