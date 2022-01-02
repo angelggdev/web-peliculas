@@ -57,4 +57,21 @@ export class MovieService {
         )
     })
   }
+
+  getStarsConfig(number:number): Array<string>{
+    let starsArray:Array<string> = [];
+
+    for (let i = 0; i < 10; i++) {
+      
+      if ( number <= i-0.4 && number >= i-0.6){
+        starsArray.push('half-full')
+      } else if (i <= Math.round(number)){
+        starsArray.push('full');
+      } else {
+        starsArray.push('blank')
+      }
+      
+    }
+    return starsArray;
+  }
 }

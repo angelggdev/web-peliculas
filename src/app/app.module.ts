@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
 import { BillboardMoviesEffects } from './store/billboard-movies/billboard-movies.effects';
 import { StoreModule } from '@ngrx/store';
 import { billboardMoviesReducer } from './store/billboard-movies/billboard-movies.reducer';
+import { movieDetailReducer } from './store/moovie-details/movie-details.reducer';
+import { MovieDetailsEffects } from './store/moovie-details/movie-details.effects';
+import { CastMemberComponent } from './movie-detail/cast-member/cast-member.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,15 @@ import { billboardMoviesReducer } from './store/billboard-movies/billboard-movie
     MovieComponent,
     MovieDetailComponent,
     BillboardComponent,
-    HomeComponent
+    HomeComponent,
+    CastMemberComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    EffectsModule.forRoot([BillboardMoviesEffects]),
-    StoreModule.forRoot({billboardMovies: billboardMoviesReducer})
+    EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects]),
+    StoreModule.forRoot({billboardMovies: billboardMoviesReducer, movieDetail: movieDetailReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

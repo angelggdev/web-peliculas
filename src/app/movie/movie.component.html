@@ -1,4 +1,8 @@
-<div class="card" style="width: 10rem; min-height:25rem">
+<div 
+  class="card" 
+  style="width: 10rem; min-height:25rem"
+  (click) = "getMovieDetails(movieId)"
+>
   <img
     [src]="'https://image.tmdb.org/t/p/w500' + posterPath"
     class="card-img-top"

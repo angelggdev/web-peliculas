@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-movie',
@@ -10,29 +12,24 @@ export class MovieComponent implements OnInit {
   @Input() posterPath:string;
   @Input() movieTitle:string;
   @Input() averageVote:number;
+  @Input() movieId:number;
   starsConfig: Array<string>;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private movieService: MovieService
+  ) { }
 
   ngOnInit(): void {
     this.starsConfig = this.getStarsConfig(this.averageVote - 1);
   }
 
   getStarsConfig(number:number): Array<string>{
-    let starsArray:Array<string> = [];
+    return this.movieService.getStarsConfig(number);
+  }
 
-    for (let i = 0; i < 10; i++) {
-      
-      if ( number <= i-0.4 && number >= i-0.6){
-        starsArray.push('half-full')
-      } else if (i <= Math.round(number)){
-        starsArray.push('full');
-      } else {
-        starsArray.push('blank')
-      }
-      
-    }
-    return starsArray;
+  getMovieDetails(id:number): void{
+    this.router.navigateByUrl(`/movie/${id}`);
   }
 
 }
