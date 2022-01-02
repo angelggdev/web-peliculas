@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Movie } from '../models/movie.model';
+import { PlayingNow } from '../models/playing_now';
 import { MovieService } from '../services/movie.service';
 import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.actions';
 
 class BillboardMovieObject {
-  billboardMovies: Array<Movie>;
+  playingNow: PlayingNow;
 }
 @Component({
   selector: 'app-home',
@@ -16,16 +18,24 @@ export class HomeComponent implements OnInit {
 
   movieList$: Array<Movie>;
   loading = true;
+  page = 1;
+  totalPages: number;
 
   constructor(
     private movieService: MovieService,
-    private store: Store<{billboardMovies: BillboardMovieObject}> 
+    private store: Store<{playingNow: BillboardMovieObject}>,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadBillboardMovies())
-    this.store.select('billboardMovies').subscribe((data) => {
-      this.movieList$ = data.billboardMovies;
+    this.route.params.subscribe((data) => {
+      console.log(data)
+      data['page'] && (this.page = parseInt(data['page']));
+    })
+    this.store.dispatch(loadBillboardMovies({page: this.page}))
+    this.store.select('playingNow').subscribe((data) => {
+      this.movieList$ = data.playingNow?.results;
+      this.totalPages = data.playingNow?.total_pages
       this.loading = false;
     })
   }

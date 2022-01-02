@@ -29,7 +29,7 @@ export class MovieComponent implements OnInit {
   }
 
   getMovieDetails(id:number): void{
-    this.router.navigateByUrl(`/movie/${id}`);
+    this.router.navigateByUrl(`/pelicula/${id}`);
   }
 
 }

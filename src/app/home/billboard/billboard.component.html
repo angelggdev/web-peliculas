@@ -26,6 +26,8 @@
         class="carousel-item"
         *ngFor="let movie of movieList; first as isFirst"
         [ngClass]="{'active': isFirst }"
+        style="cursor:pointer;"
+        (click) = "getMovieDetails(movie.id)"
         >
         <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" class="d-block w-100" [alt]="movie.title" />
         <div 

@@ -9,8 +9,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'movie/:id',
+    path: 'pelicula/:id',
     component: MovieDetailComponent
+  },
+  {
+    path: 'cartelera/:page',
+    component: HomeComponent
   }
 ];
 

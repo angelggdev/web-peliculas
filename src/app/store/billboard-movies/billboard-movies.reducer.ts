@@ -7,8 +7,8 @@ const initialState = [] as Array<Movie>;
 
 export const billboardMoviesReducer = createReducer(
     initialState,
-    on(loadBillboardMoviesSuccess, (state, {billboardMovies}) => ({
+    on(loadBillboardMoviesSuccess, (state, {playingNow}) => ({
         ...state,
-        billboardMovies
+        playingNow
     }))
 )

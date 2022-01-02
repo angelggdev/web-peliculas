@@ -1,9 +1,24 @@
-<app-billboard
-    [movieList]="movieList$"
-    [loading]="loading"
-></app-billboard>
-<app-movie-list
-    [movieList]="movieList$"
-    [loading]="loading"
->
-</app-movie-list>
+<h1 style="text-align: center;">Cartelera</h1>
+
+<app-billboard [movieList]="movieList$" [loading]="loading"></app-billboard>
+<app-movie-list [movieList]="movieList$" [loading]="loading"> </app-movie-list>
+
+<div>
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{ disabled: page === 1 }">
+      <a class="page-link" [href]="'/cartelera/' + (page - 1)" [tabindex]="page === 1 ? -1 : null"
+        >Previous</a
+      >
+    </li>
+    <li     
+        class="page-item" 
+        *ngFor="let x of [].constructor(totalPages); let i = index"
+        [ngClass]="{ disabled: page === (i+1) }"
+    >
+      <a class="page-link" [href]="'/cartelera/' + (i+1)" [tabindex]="page === (i+1) ? -1 : null">{{ i+1 }} </a>
+    </li>
+    <li class="page-item" [ngClass]="{ disabled: page === totalPages + 1 }">
+      <a class="page-link" [href]="'/cartelera/' + (page - 1)" [tabindex]="page === 1 ? -1 : null">Next</a>
+    </li>
+  </ul>
+</div>

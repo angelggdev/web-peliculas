@@ -11,14 +11,14 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  getBillboardMovies(): Observable<PlayingNow>{
+  getBillboardMovies(page:number): Observable<PlayingNow>{
     return this.http.get(environment.apiUrl + 'movie/now_playing', { 
       params: new HttpParams().set(
           "api_key", environment.api_key
         ).set(
           "language", "es"
         ).set(
-          "page", 1
+          "page", page
         )
     }) as Observable<PlayingNow>
   }

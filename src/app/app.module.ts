@@ -35,7 +35,7 @@ import { CastMemberComponent } from './movie-detail/cast-member/cast-member.comp
     HttpClientModule,
     EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects]),
     StoreModule.forRoot({
-      billboardMovies: billboardMoviesReducer, 
+      playingNow: billboardMoviesReducer, 
       movieDetailReducer
     })
   ],

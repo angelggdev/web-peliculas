@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/movie.model';
@@ -15,12 +16,19 @@ export class BillboardComponent implements OnInit {
   @Input() loading: boolean;
 
 
-  constructor() { 
+  constructor(
+    private router: Router
+  ) { 
     
   }
 
   ngOnInit(): void {    
 
   }
+
+  getMovieDetails(id:number): void{
+    this.router.navigateByUrl(`/pelicula/${id}`);
+  }
+
 
 }

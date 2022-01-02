@@ -11,9 +11,9 @@ export class BillboardMoviesEffects {
     loadBillboardMovies$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(loadBillboardMovies),
-            mergeMap(() => {
-                return this.movieService.getBillboardMovies().pipe(
-                map(playingNow => loadBillboardMoviesSuccess({billboardMovies: playingNow.results})),
+            mergeMap(({page}) => {
+                return this.movieService.getBillboardMovies(page).pipe(
+                map(playingNow => loadBillboardMoviesSuccess({playingNow: playingNow})),
                 catchError(() => of(loadBillboardMoviesFailure()))
               )})
         )
