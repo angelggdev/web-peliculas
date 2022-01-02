@@ -3,7 +3,7 @@
 >
     <app-movie
         *ngFor="let movie of movieList"
-        [posterPath]="movie.poster_path"
+        [posterPath]="movie.poster_path? movie.poster_path: ''"
         [averageVote]="movie.vote_average"
         [movieTitle]="movie.title"
     ></app-movie>

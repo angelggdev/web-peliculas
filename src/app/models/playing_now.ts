@@ -1,10 +1,7 @@
 import { Movie } from './movie.model';
 
 export class PlayingNow {
-  dates: {
-    maximum: number;
-    minimum: number;
-  };
+  dates: Object;
   page: number;
   results: Array<Movie>;
   total_pages: number;
