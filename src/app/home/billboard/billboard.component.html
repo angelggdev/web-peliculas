@@ -10,7 +10,7 @@
       class="carousel-indicators"
     >
       <button
-        *ngFor="let movie of movieList$; let i = index; first as isFirst"
+        *ngFor="let movie of movieList; let i = index; first as isFirst"
         type="button"
         data-bs-target="#carouselExampleIndicators"
         [attr.data-bs-slide-to]="i"
@@ -24,7 +24,7 @@
     >
       <div 
         class="carousel-item"
-        *ngFor="let movie of movieList$; first as isFirst"
+        *ngFor="let movie of movieList; first as isFirst"
         [ngClass]="{'active': isFirst }"
         >
         <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" class="d-block w-100" [alt]="movie.title" />

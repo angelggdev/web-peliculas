@@ -1,1 +1,13 @@
-<p>movie works!</p>
+<div class="card" style="width: 10rem; min-height:25rem">
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + posterPath"
+    class="card-img-top"
+    [alt]="movieTitle"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{movieTitle}}</h5>
+  </div>
+  <div class="list-group list-group-flush">
+    <li class="list-group-item">{{averageVote}}</li>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div
+    style="display: flex; align-items: center; justify-content: center;flex-wrap: wrap;"
+>
+    <app-movie
+        *ngFor="let movie of movieList"
+        [posterPath]="movie.poster_path"
+        [averageVote]="movie.vote_average"
+        [movieTitle]="movie.title"
+    ></app-movie>
+</div>

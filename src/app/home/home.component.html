@@ -1,1 +1,9 @@
-<app-billboard></app-billboard>
+<app-billboard
+    [movieList]="movieList$"
+    [loading]="loading"
+></app-billboard>
+<app-movie-list
+    [movieList]="movieList$"
+    [loading]="loading"
+>
+</app-movie-list>
