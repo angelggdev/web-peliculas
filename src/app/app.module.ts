@@ -34,7 +34,10 @@ import { CastMemberComponent } from './movie-detail/cast-member/cast-member.comp
     AppRoutingModule,
     HttpClientModule,
     EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects]),
-    StoreModule.forRoot({billboardMovies: billboardMoviesReducer, movieDetail: movieDetailReducer})
+    StoreModule.forRoot({
+      billboardMovies: billboardMoviesReducer, 
+      movieDetailReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

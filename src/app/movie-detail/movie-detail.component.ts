@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Artist } from '../models/artist.model';
+import { MovieCast } from '../models/movie-cast.model';
 import { MovieDetail } from '../models/movie-detail.model';
 import { MovieService } from '../services/movie.service';
-import { loadMovieDetails } from '../store/moovie-details/movie-details.actions';
+import { loadCast, loadMovieDetails } from '../store/moovie-details/movie-details.actions';
 
 class MovieDetailObject {
   movieDetail: MovieDetail;
+  cast:MovieCast
+}
+
+class CastObject {
+  cast: MovieCast
 }
 @Component({
   selector: 'app-movie-detail',
@@ -19,9 +26,10 @@ export class MovieDetailComponent implements OnInit {
   movieId: number;
   loading = true;
   starsConfig: Array<string>;
+  cast: Array<Artist>;
 
   constructor(
-    private store: Store<{movieDetail: MovieDetailObject}>,
+    private store: Store<{movieDetailReducer: MovieDetailObject}>,
     private route: ActivatedRoute,
     private movieService: MovieService
   ) { }
@@ -29,11 +37,16 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((res) => this.movieId = parseInt(res['id']));
     this.store.dispatch(loadMovieDetails({id: this.movieId}));
-    this.store.select('movieDetail').subscribe((data) => {
+    this.store.dispatch(loadCast({id: this.movieId}));
+    this.store.select('movieDetailReducer').subscribe((data) => {
+      console.log(data)
       this.movieDetails = data.movieDetail;
-      this.loading = false;
       this.starsConfig = this.movieService.getStarsConfig(data.movieDetail?.vote_average);
+      this.cast = data.cast?.cast;
+      this.loading = false;
     });
+
+
   }
 
 }

@@ -1,6 +1,10 @@
-<div class="card" style="width: 10rem;">
-    <img src="..." class="card-img-top" alt="...">
+<div class="card" style="width: 8rem; margin:10px;">
+    <img 
+        [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path"
+        class="card-img-top" 
+        [alt]="castMember.name"
+    >
     <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">{{ castMember.name }}</p>
     </div>
   </div>

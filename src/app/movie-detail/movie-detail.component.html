@@ -1,5 +1,5 @@
 <div
-    style="display:flex; align-items: center; justify-content: center;"
+    style="display:flex; align-items: center; justify-content: center; flex-direction: column; padding: 30px;"
     *ngIf="movieDetails; else spinner"
 >
   <div
@@ -67,7 +67,19 @@
       </div>
     </div>
   </div>
-  
+  <div
+    class="overflow-auto"
+    style="max-width: 80%;"
+  >
+      <div
+        style="display: flex;"
+      >
+          <app-cast-member
+            *ngFor="let artist of cast"
+            [castMember]="artist"
+          ></app-cast-member>
+      </div>
+  </div>
 
 </div>
 <ng-template #spinner>
