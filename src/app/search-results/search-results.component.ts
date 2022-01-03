@@ -18,6 +18,7 @@ export class SearchResultsComponent implements OnInit {
 
   movieList: Array<Movie>;
   search: string;
+  loading: boolean = true;
 
   constructor(
     private store: Store<{searchResult: MovieResultsObject}>,
@@ -25,16 +26,12 @@ export class SearchResultsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((res) => this.search = res['query']);
+    this.route.params.subscribe((res) => this.search = res['search']);
     this.store.dispatch(searchMovie({query: this.search}));
     this.store.select('searchResult').subscribe((data) => {
-      console.log(data)
-      /* this.movieDetails = data.movieDetail;
-      this.starsConfig = this.movieService.getStarsConfig(data.movieDetail?.vote_average);
-      this.cast = data.cast?.cast;
-      this.loading = false; */
+      this.movieList = data.searchResult?.results;
+      this.loading = false;
     });
-    console.log(this.store.select('searchResult'))
 
   }
 

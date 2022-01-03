@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SearchResults } from '../models/search-results.mode';
+import { searchMovie } from '../store/movie-search/movie-search.actions';
 
+class MovieResultsObject{
+  searchResult: SearchResults
+}
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -11,7 +17,9 @@ export class NavBarComponent implements OnInit {
   userInput: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private store: Store<{searchResult: MovieResultsObject}>,
+
   ) { }
 
   ngOnInit(): void {
@@ -23,5 +31,7 @@ export class NavBarComponent implements OnInit {
 
   onSubmit(){
     this.router.navigateByUrl(`/resultados/${this.userInput}`);
+    this.store.dispatch(searchMovie({query: this.userInput}));
+
   }
 }
