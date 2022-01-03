@@ -5,7 +5,7 @@ import { Artist } from '../models/artist.model';
 import { MovieCast } from '../models/movie-cast.model';
 import { MovieDetail } from '../models/movie-detail.model';
 import { MovieService } from '../services/movie.service';
-import { loadCast, loadMovieDetails } from '../store/moovie-details/movie-details.actions';
+import { loadCast, loadMovieDetails } from '../store/movie-details/movie-details.actions';
 
 class MovieDetailObject {
   movieDetail: MovieDetail;

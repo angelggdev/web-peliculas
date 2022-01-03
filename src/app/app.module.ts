@@ -14,8 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { BillboardMoviesEffects } from './store/billboard-movies/billboard-movies.effects';
 import { StoreModule } from '@ngrx/store';
 import { billboardMoviesReducer } from './store/billboard-movies/billboard-movies.reducer';
-import { movieDetailReducer } from './store/moovie-details/movie-details.reducer';
-import { MovieDetailsEffects } from './store/moovie-details/movie-details.effects';
+import { movieDetailReducer } from './store/movie-details/movie-details.reducer';
+import { MovieDetailsEffects } from './store/movie-details/movie-details.effects';
 import { CastMemberComponent } from './movie-detail/cast-member/cast-member.component';
 import { FormsModule } from '@angular/forms';
 
