@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private store: Store<{searchResult: MovieResultsObject}>,
+    private store: Store<{searchResult: MovieResultsObject}>
 
   ) { }
 
@@ -32,6 +32,5 @@ export class NavBarComponent implements OnInit {
   onSubmit(){
     this.router.navigateByUrl(`/resultados/${this.userInput}`);
     this.store.dispatch(searchMovie({query: this.userInput}));
-
   }
 }

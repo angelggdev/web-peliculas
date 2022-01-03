@@ -6,6 +6,7 @@ import { MovieCast } from '../models/movie-cast.model';
 import { MovieDetail } from '../models/movie-detail.model';
 import { MovieService } from '../services/movie.service';
 import { loadCast, loadMovieDetails } from '../store/movie-details/movie-details.actions';
+import {Location} from '@angular/common';
 
 class MovieDetailObject {
   movieDetail: MovieDetail;
@@ -31,7 +32,8 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private store: Store<{movieDetailReducer: MovieDetailObject}>,
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +48,10 @@ export class MovieDetailComponent implements OnInit {
       this.loading = false;
     });
 
+  }
 
+  goBack(){
+    this.location.back();
   }
 
 }
