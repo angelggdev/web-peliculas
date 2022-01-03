@@ -18,6 +18,9 @@ import { movieDetailReducer } from './store/movie-details/movie-details.reducer'
 import { MovieDetailsEffects } from './store/movie-details/movie-details.effects';
 import { CastMemberComponent } from './movie-detail/cast-member/cast-member.component';
 import { FormsModule } from '@angular/forms';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { movieSearchReducer } from './store/movie-search/movie-search.reducer';
+import { MovieSearchEffects } from './store/movie-search/movie-search.effects';
 
 @NgModule({
   declarations: [
@@ -28,16 +31,18 @@ import { FormsModule } from '@angular/forms';
     MovieDetailComponent,
     BillboardComponent,
     HomeComponent,
-    CastMemberComponent
+    CastMemberComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects]),
+    EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects, MovieSearchEffects]),
     StoreModule.forRoot({
       playingNow: billboardMoviesReducer, 
+      searchResult: movieSearchReducer,
       movieDetailReducer
     })
   ],

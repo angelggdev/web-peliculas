@@ -16,14 +16,13 @@ class BillboardMovieObject {
 })
 export class HomeComponent implements OnInit {
 
-  movieList$: Array<Movie>;
+  movieList: Array<Movie>;
   loading = true;
   page = 1;
   totalPages: number;
   paginatorArray: Array<number>
 
   constructor(
-    private movieService: MovieService,
     private store: Store<{playingNow: BillboardMovieObject}>,
     private route: ActivatedRoute
   ) { }
@@ -35,7 +34,7 @@ export class HomeComponent implements OnInit {
     })
     this.store.dispatch(loadBillboardMovies({page: this.page}))
     this.store.select('playingNow').subscribe((data) => {
-      this.movieList$ = data.playingNow?.results;
+      this.movieList = data.playingNow?.results;
       this.totalPages = data.playingNow?.total_pages;
       this.loading = false;
       this.constructPaginator()

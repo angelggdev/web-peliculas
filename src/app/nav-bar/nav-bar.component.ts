@@ -22,6 +22,6 @@ export class NavBarComponent implements OnInit {
   }
 
   onSubmit(){
-    
+    this.router.navigateByUrl(`/resultados/${this.userInput}`);
   }
 }
