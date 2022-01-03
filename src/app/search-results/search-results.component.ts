@@ -21,13 +21,10 @@ export class SearchResultsComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    private store: Store<{searchResult: MovieResultsObject}>,
-    private route: ActivatedRoute
+    private store: Store<{searchResult: MovieResultsObject}>
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((res) => this.search = res['search']);
-    this.store.dispatch(searchMovie({query: this.search}));
     this.store.select('searchResult').subscribe((data) => {
       this.movieList = data.searchResult?.results;
       this.loading = false;
