@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   loading = true;
   page = 1;
   totalPages: number;
+  paginatorArray: Array<number>
 
   constructor(
     private movieService: MovieService,
@@ -35,17 +36,25 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(loadBillboardMovies({page: this.page}))
     this.store.select('playingNow').subscribe((data) => {
       this.movieList$ = data.playingNow?.results;
-      this.totalPages = data.playingNow?.total_pages
+      this.totalPages = data.playingNow?.total_pages;
       this.loading = false;
+      this.constructPaginator()
     })
   }
 
-  constructPaginator():Array<number>{
-    let paginatorArray:Array<number> = [];
-    for (let i = 0; i < 9; i++) {
-      paginatorArray.push(this.page + i)
+  constructPaginator(){
+    let _paginatorArray: Array<number> = [];
+    if( this.page < this.totalPages-6 ) {
+      for (let i = 0; i < 6; i++) {
+        _paginatorArray.push(this.page + i)
+      }
+    } else {
+      console.log('ok')
+      for (let i = 6; i >= 0; i--) {
+        _paginatorArray.push(this.totalPages - i)
+      }
     }
-    return paginatorArray;
+    this.paginatorArray = _paginatorArray;
   }
 
 }

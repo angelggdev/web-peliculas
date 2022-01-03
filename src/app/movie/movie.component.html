@@ -4,7 +4,7 @@
   (click) = "getMovieDetails(movieId)"
 >
   <img
-    [src]="'https://image.tmdb.org/t/p/w500' + posterPath"
+    [src]="posterPath ? ('https://image.tmdb.org/t/p/w500' + posterPath) : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
     class="card-img-top"
     [alt]="movieTitle"
   />
