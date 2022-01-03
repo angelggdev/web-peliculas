@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
+  userInput: string;
+
   constructor(
     private router: Router
   ) { }
@@ -17,5 +19,9 @@ export class NavBarComponent implements OnInit {
 
   goHome():void{
     this.router.navigateByUrl('/');
+  }
+
+  onSubmit(){
+    
   }
 }

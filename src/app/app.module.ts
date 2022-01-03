@@ -17,6 +17,7 @@ import { billboardMoviesReducer } from './store/billboard-movies/billboard-movie
 import { movieDetailReducer } from './store/moovie-details/movie-details.reducer';
 import { MovieDetailsEffects } from './store/moovie-details/movie-details.effects';
 import { CastMemberComponent } from './movie-detail/cast-member/cast-member.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CastMemberComponent } from './movie-detail/cast-member/cast-member.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects]),
     StoreModule.forRoot({
       playingNow: billboardMoviesReducer, 
