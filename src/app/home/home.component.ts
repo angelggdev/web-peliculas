@@ -40,4 +40,12 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  constructPaginator():Array<number>{
+    let paginatorArray:Array<number> = [];
+    for (let i = 0; i < 9; i++) {
+      paginatorArray.push(this.page + i)
+    }
+    return paginatorArray;
+  }
+
 }
