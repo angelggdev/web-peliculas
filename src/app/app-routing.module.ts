@@ -6,25 +6,25 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 
 const routes: Routes = [
   {
-    path:'', 
-    component: HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
     path: 'pelicula/:id',
-    component: MovieDetailComponent
+    component: MovieDetailComponent,
   },
   {
     path: 'cartelera/:page',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'resultados/:search/:page',
     component: SearchResultsComponent,
-  }
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'})],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

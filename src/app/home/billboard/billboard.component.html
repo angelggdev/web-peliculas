@@ -5,39 +5,39 @@
     class="billboard-carousel carousel slide"
     data-bs-ride="carousel"
   >
-    <div 
-      class="billboard-indicators carousel-indicators"
-    >
+    <div class="billboard-indicators carousel-indicators">
       <button
         *ngFor="let movie of movieList; let i = index; first as isFirst"
         type="button"
         data-bs-target="#carouselExampleIndicators"
         [attr.data-bs-slide-to]="i"
-        [ngClass]="{'active': isFirst}"
+        [ngClass]="{ active: isFirst }"
         class="active"
-        [attr.aria-current]="isFirst? true:false"
+        [attr.aria-current]="isFirst ? true : false"
       ></button>
     </div>
-    <div 
-      class="carousel-inner"
-    >
-      <div 
+    <div class="carousel-inner">
+      <div
         class="billboard-item carousel-item"
         *ngFor="let movie of movieList; first as isFirst"
-        [ngClass]="{'active': isFirst }"
-        (click) = "getMovieDetails(movie.id)"
-        >
-        <img 
-          [src]="movie.backdrop_path? ('https://image.tmdb.org/t/p/w500' + movie.backdrop_path) : '../../../assets/placeholder.jpg'" 
-          class="d-block w-100" 
-          [alt]="movie.title" 
+        [ngClass]="{ active: isFirst }"
+        (click)="getMovieDetails(movie.id)"
+      >
+        <img
+          [src]="
+            movie.backdrop_path
+              ? 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path
+              : '../../../assets/placeholder.jpg'
+          "
+          class="d-block w-100"
+          [alt]="movie.title"
         />
-        <div 
+        <div
           class="billboard-info carousel-caption d-md-block"
-          [ngClass]="{'d-none': !isFirst}"
-          >
-          <h5>{{movie.title}}</h5>
-          <p>{{movie.overview.substring(0,170)}}...</p>
+          [ngClass]="{ 'd-none': !isFirst }"
+        >
+          <h5>{{ movie.title }}</h5>
+          <p>{{ movie.overview.substring(0, 170) }}...</p>
         </div>
       </div>
     </div>
@@ -61,10 +61,10 @@
     </button>
   </div>
   <ng-template #spinner>
-    <div style="height: 80vh; display:flex; align-items: center; justify-content: center; ">
-      <div class="spinner-grow" role="status" >
+    <div class="spinner-container">
+      <div class="spinner-grow" role="status">
         <span class="sr-only"></span>
       </div>
     </div>
-  </ng-template> 
+  </ng-template>
 </div>

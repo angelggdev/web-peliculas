@@ -32,21 +32,25 @@ import { MovieSearchEffects } from './store/movie-search/movie-search.effects';
     BillboardComponent,
     HomeComponent,
     CastMemberComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    EffectsModule.forRoot([BillboardMoviesEffects, MovieDetailsEffects, MovieSearchEffects]),
+    EffectsModule.forRoot([
+      BillboardMoviesEffects,
+      MovieDetailsEffects,
+      MovieSearchEffects,
+    ]),
     StoreModule.forRoot({
-      playingNow: billboardMoviesReducer, 
+      playingNow: billboardMoviesReducer,
       searchResult: movieSearchReducer,
-      movieDetailReducer
-    })
+      movieDetailReducer,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

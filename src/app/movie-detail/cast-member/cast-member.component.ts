@@ -4,15 +4,12 @@ import { Artist } from 'src/app/models/artist.model';
 @Component({
   selector: 'app-cast-member',
   templateUrl: './cast-member.component.html',
-  styleUrls: ['./cast-member.component.scss']
+  styleUrls: ['./cast-member.component.scss'],
 })
 export class CastMemberComponent implements OnInit {
-
   @Input() castMember: Artist;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

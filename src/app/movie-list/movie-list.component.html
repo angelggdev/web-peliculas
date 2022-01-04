@@ -1,11 +1,9 @@
-<div
-    style="display: flex; align-items: flex-start; justify-content: center;flex-wrap: wrap; gap:3rem"
->
-    <app-movie
-        *ngFor="let movie of movieList"
-        [posterPath]="movie.poster_path? movie.poster_path: ''"
-        [averageVote]="movie.vote_average"
-        [movieTitle]="movie.title"
-        [movieId]="movie.id"
-    ></app-movie>
+<div class="movie-list-container">
+  <app-movie
+    *ngFor="let movie of movieList"
+    [posterPath]="movie.poster_path ? movie.poster_path : ''"
+    [averageVote]="movie.vote_average"
+    [movieTitle]="movie.title"
+    [movieId]="movie.id"
+  ></app-movie>
 </div>

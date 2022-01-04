@@ -1,7 +1,7 @@
-import { Artist } from "./artist.model";
+import { Artist } from './artist.model';
 
 export class MovieCast {
-    id:number;
-    cast: Array<Artist>;
-    crew: Array<Object>
+  id: number;
+  cast: Array<Artist>;
+  crew: Array<Object>;
 }
