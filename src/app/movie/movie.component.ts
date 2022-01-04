@@ -1,7 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { MovieCast } from '../models/movie-cast.model';
+import { MovieDetail } from '../models/movie-detail.model';
 import { MovieService } from '../services/movie.service';
+import { loadCast, loadMovieDetails } from '../store/movie-details/movie-details.actions';
 
+class MovieDetailObject {
+  movieDetail: MovieDetail;
+  cast:MovieCast
+}
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -17,7 +25,9 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private store: Store<{movieDetailReducer: MovieDetailObject}>,
+
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +40,8 @@ export class MovieComponent implements OnInit {
 
   getMovieDetails(id:number): void{
     this.router.navigateByUrl(`/pelicula/${id}`);
+    this.store.dispatch(loadMovieDetails({id: this.movieId}));
+    this.store.dispatch(loadCast({id: this.movieId}));
   }
 
 }

@@ -13,9 +13,6 @@ class MovieDetailObject {
   cast:MovieCast
 }
 
-class CastObject {
-  cast: MovieCast
-}
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',

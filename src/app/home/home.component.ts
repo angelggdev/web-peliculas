@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       this.movieList = data.playingNow?.results;
       this.totalPages = data.playingNow?.total_pages;
       this.constructPaginator();
-      this.loading = false;
+      this.loading = false; 
       }
     )
   }
@@ -48,12 +48,11 @@ export class HomeComponent implements OnInit {
         _paginatorArray.push(this.page + i)
       }
     } else {
-      console.log('ok')
       for (let i = 6; i >= 0; i--) {
         _paginatorArray.push(this.totalPages - i)
       }
     }
-    this.paginatorArray = _paginatorArray;
+    if(!_paginatorArray.includes(NaN)) this.paginatorArray = _paginatorArray;
   }
 
 }

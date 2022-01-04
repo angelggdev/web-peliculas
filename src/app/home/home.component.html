@@ -1,10 +1,9 @@
 <app-billboard [movieList]="movieList" [loading]="loading"></app-billboard>
-<h2 class="movies-title">Películas</h2>
-<app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
-<div>
+<div *ngIf="!loading; else spinner">
+  <h2 class="movies-title">Películas</h2>
+  <app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
   <div
       class="paginator"
-      *ngIf="!loading; else spinner"
   >
     <ul class="pagination">
       <li class="page-item" [ngClass]="{ disabled: page === 1 }">
@@ -40,9 +39,11 @@
       </li>
     </ul>
   </div>
-  <ng-template #spinner>
+</div>
+<ng-template #spinner >
+  <div style="display:flex; align-items: center; justify-content: center; ">
     <div class="spinner-grow" role="status">
       <span class="sr-only"></span>
     </div>
-  </ng-template> 
-</div>
+  </div>
+</ng-template> 

@@ -55,7 +55,7 @@ export class SearchResultsComponent implements OnInit {
         _paginatorArray.push(this.totalPages - i)
       }
     }
-    this.paginatorArray = _paginatorArray;
+    if(!_paginatorArray.includes(NaN)) this.paginatorArray = _paginatorArray;
   }
 
 }
