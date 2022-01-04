@@ -10,6 +10,9 @@
         >Previous</a
       >
     </li>
+    <li class="page-item" *ngIf="page > 2">
+      <a class="page-link" [href]="'/cartelera/' + 1" >1</a>
+    </li>
     <li class="page-item" *ngIf="page > 1">
         <a class="page-link" [href]="'/cartelera/' + ((page >= 6) ? (page - 6): (page-1))" 
           >...</a
