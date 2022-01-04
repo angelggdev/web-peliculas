@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
     this.store.select('playingNow').subscribe((data) => {
       this.movieList = data.playingNow?.results;
       this.totalPages = data.playingNow?.total_pages;
+      this.constructPaginator();
       this.loading = false;
-      this.constructPaginator()
-    })
+      }
+    )
   }
 
   constructPaginator(){
