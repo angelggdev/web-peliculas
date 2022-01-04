@@ -1,11 +1,8 @@
 <app-billboard [movieList]="movieList" [loading]="loading"></app-billboard>
-
-<h2 style="margin:10px 60px 10px 60px;">Películas</h2>
-
+<h2 class="movies-title">Películas</h2>
 <app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
-
 <div
-    style="display:flex; align-items: center; justify-content: center; margin: 20px;"
+    class="paginator"
 >
   <ul class="pagination">
     <li class="page-item" [ngClass]="{ disabled: page === 1 }">
@@ -30,8 +27,11 @@
           >...</a
         >
     </li>
-    <li class="page-item" [ngClass]="{ disabled: page === totalPages + 1 }">
-      <a class="page-link" [href]="'/cartelera/' + (page - 1)" [tabindex]="page === 1 ? -1 : null">Next</a>
+    <li class="page-item" *ngIf="page <= totalPages-6">
+      <a class="page-link" [href]="'/cartelera/' + totalPages" >{{ totalPages }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{ disabled: page === totalPages }">
+      <a class="page-link" [href]="'/cartelera/' + (page - 1)" [tabindex]="page === totalPages ? -1 : null">Next</a>
     </li>
   </ul>
 </div>

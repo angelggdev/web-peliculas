@@ -28,9 +28,7 @@
         (click) = "getMovieDetails(movie.id)"
         >
         <img 
-          [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" 
-          
-          style="background: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg') no-repeat center"
+          [src]="movie.backdrop_path? ('https://image.tmdb.org/t/p/w500' + movie.backdrop_path) : '../../../assets/placeholder.jpg'" 
           class="d-block w-100" 
           [alt]="movie.title" 
         />
