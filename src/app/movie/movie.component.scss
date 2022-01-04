@@ -1,0 +1,21 @@
+.movie-container{
+    width: 15rem; 
+    min-height:30rem; 
+    cursor: pointer;
+    li{
+        display:flex; 
+        justify-content: center;
+    }
+    .movie-rating-container{
+        display: flex; 
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .movie-container{
+        width: 9rem;
+        min-height:25rem; 
+    }
+
+}

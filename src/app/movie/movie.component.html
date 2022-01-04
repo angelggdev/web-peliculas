@@ -1,6 +1,5 @@
 <div 
-  class="card" 
-  style="width: 15rem; min-height:30rem; cursor: pointer;"
+  class="movie-container card" 
   (click) = "getMovieDetails(movieId)"
 >
   <img
@@ -8,13 +7,13 @@
     class="card-img-top"
     [alt]="movieTitle"
   />
-  <div class="card-body" style="align-items: center; " >
+  <div class="card-body">
     <h6 class="card-title">{{movieTitle}}</h6>
   </div>
   <div class="list-group list-group-flush">
-    <li style="display:flex; justify-content: center;" class="list-group-item">{{averageVote}}</li>
+    <li class="list-group-item">{{averageVote}}</li>
     <div
-        style="display: flex; justify-content: center;"
+        class="movie-rating-container"
     >
         <div
             *ngFor="let star of starsConfig"
