@@ -18,8 +18,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'resultados/:search',
-    component: SearchResultsComponent
+    path: 'resultados/:search/:page',
+    component: SearchResultsComponent,
   }
 ];
 

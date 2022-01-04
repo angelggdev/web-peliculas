@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
-      console.log(data)
       data['page'] && (this.page = parseInt(data['page']));
     })
     this.store.dispatch(loadBillboardMovies({page: this.page}))

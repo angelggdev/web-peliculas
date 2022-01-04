@@ -3,7 +3,7 @@ import { SearchResults } from "src/app/models/search-results.mode";
 
 export const searchMovie = createAction(
     '[MovieSearch] SearchMovie',
-    props<{query: string}>()
+    props<{query: string, page: number}>()
 );
 
 export const searchMovieSuccess = createAction(

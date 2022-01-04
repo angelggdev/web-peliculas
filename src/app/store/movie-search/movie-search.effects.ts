@@ -11,8 +11,8 @@ export class MovieSearchEffects {
     searchMovie$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(searchMovie),
-            mergeMap(({query}) => {
-                return this.movieService.searchMovie(query).pipe(
+            mergeMap(({query, page}) => {
+                return this.movieService.searchMovie(query, page).pipe(
                 map(searchResult => searchMovieSuccess({searchResult})),
                 catchError(() => of(searchMovieFailure()))
               )})

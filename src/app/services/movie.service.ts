@@ -23,7 +23,7 @@ export class MovieService {
     }) as Observable<PlayingNow>
   }
 
-  searchMovie(searchQuery: string): Observable<any>{
+  searchMovie(searchQuery: string, page:number): Observable<any>{
     return this.http.get(environment.apiUrl + 'search/movie', {
       params: new HttpParams().set(
           "query", searchQuery
@@ -33,7 +33,7 @@ export class MovieService {
         ).set(
           "language", "es"
         ).set(
-          "page", 1
+          "page", page
         )
     })
   }
@@ -74,4 +74,5 @@ export class MovieService {
     }
     return starsArray;
   }
+  
 }
