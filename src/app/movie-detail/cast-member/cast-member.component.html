@@ -1,6 +1,6 @@
 <div class="card" style="width: 8rem; margin:10px;">
     <img 
-        [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path"
+        [src]="castMember.profile_path? ('https://image.tmdb.org/t/p/w500' + castMember.profile_path) : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
         class="card-img-top" 
         [alt]="castMember.name"
     >
