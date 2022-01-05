@@ -8,6 +8,7 @@ import { MovieService } from '../services/movie.service';
 
 class MovieResultsObject {
   searchResult: SearchResults;
+  error?: string;
 }
 
 @Component({
@@ -22,6 +23,7 @@ export class SearchResultsComponent implements OnInit {
   page = 1;
   totalPages: number;
   paginatorArray: Array<number>;
+  error = false;
 
   constructor(
     private store: Store<{ searchResult: MovieResultsObject }>,
@@ -37,11 +39,17 @@ export class SearchResultsComponent implements OnInit {
     });
     this.store.dispatch(searchMovie({ query: this.search, page: this.page }));
     this.store.select('searchResult').subscribe((data) => {
-      this.movieList = data.searchResult?.results;
-      this.totalPages = data.searchResult?.total_pages;
-      this.paginatorArray = this.movieService.constructPaginator(this.page, this.totalPages);
-      this.loading = false;
+      if (data.error) {
+        this.error = true;
+      } else {
+        this.movieList = data.searchResult?.results;
+        this.totalPages = data.searchResult?.total_pages;
+        this.paginatorArray = this.movieService.constructPaginator(
+          this.page,
+          this.totalPages
+        );
+        this.loading = false;
+      }
     });
   }
-  
 }

@@ -8,7 +8,7 @@ import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.
 
 class BillboardMovieObject {
   playingNow: PlayingNow;
-  error?:'string'
+  error?: 'string';
 }
 @Component({
   selector: 'app-home',
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   page = 1;
   totalPages: number;
   paginatorArray: Array<number>;
-  error: boolean;
+  error = false;
 
   constructor(
     private store: Store<{ playingNow: BillboardMovieObject }>,
@@ -36,15 +36,17 @@ export class HomeComponent implements OnInit {
     });
     this.store.dispatch(loadBillboardMovies({ page: this.page }));
     this.store.select('playingNow').subscribe((data) => {
-      if(data.error){
+      if (data.error) {
         this.error = true;
       } else {
         this.movieList = data.playingNow?.results;
         this.totalPages = data.playingNow?.total_pages;
-        this.paginatorArray = this.movieService.constructPaginator(this.page, this.totalPages);
+        this.paginatorArray = this.movieService.constructPaginator(
+          this.page,
+          this.totalPages
+        );
         this.loading = false;
       }
     });
   }
-
 }
