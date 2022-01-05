@@ -54,6 +54,8 @@ This service contains the API calls and other functions:
 
     -getStarsConfig: function that returns an array of string that determines how the rating of each movie will be displayed.
 
+    -constructPaginator: function that returns an array of number to display in the paginator of the home and search results components.
+
 ## Store
 
 ### Billboard Movies

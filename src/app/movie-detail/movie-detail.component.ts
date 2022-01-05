@@ -36,6 +36,7 @@ export class MovieDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //the component gets the id param from the url to dispatch loadMovieDetails and loadMovieCast
     this.route.params.subscribe((res) => (this.movieId = parseInt(res['id'])));
     this.store.dispatch(loadMovieDetails({ id: this.movieId }));
     this.store.dispatch(loadCast({ id: this.movieId }));
