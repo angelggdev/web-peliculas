@@ -5,13 +5,13 @@
 <app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
 
 <div>
-  <div class="paginator" *ngIf="!loading; else spinner">
+  <div class="paginator" *ngIf="!loading ; else spinner">
     <ul class="pagination">
-      <li class="page-item" [ngClass]="{ disabled: page === 1 }">
+      <li class="page-item" [ngClass]="{ disabled: (page === 1) || !totalPages}">
         <a
           class="page-link"
           [href]="'/resultados/' + search + '/' + (page - 1)"
-          [tabindex]="page === 1 ? -1 : null"
+          [tabindex]="(page === 1) || !totalPages? -1 : null"
           >Previous</a
         >
       </li>
@@ -51,11 +51,11 @@
           >{{ totalPages }}</a
         >
       </li>
-      <li class="page-item" [ngClass]="{ disabled: page === totalPages }">
+      <li class="page-item" [ngClass]="{ disabled: (page === totalPages) || !totalPages}">
         <a
           class="page-link"
           [href]="'/resultados/' + search + '/' + (page - 1)"
-          [tabindex]="page === totalPages ? -1 : null"
+          [tabindex]="(page === totalPages) || !totalPages ? -1 : null"
           >Next</a
         >
       </li>

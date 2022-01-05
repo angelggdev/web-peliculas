@@ -40,7 +40,6 @@ export class MovieDetailComponent implements OnInit {
     this.store.dispatch(loadMovieDetails({ id: this.movieId }));
     this.store.dispatch(loadCast({ id: this.movieId }));
     this.store.select('movieDetailReducer').subscribe((data) => {
-      console.log(data);
       this.movieDetails = data.movieDetail;
       this.starsConfig = this.movieService.getStarsConfig(
         data.movieDetail?.vote_average

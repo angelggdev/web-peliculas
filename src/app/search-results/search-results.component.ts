@@ -48,11 +48,11 @@ export class SearchResultsComponent implements OnInit {
         _paginatorArray.push(this.page + i);
       }
     } else {
-      console.log('ok');
       for (let i = 6; i >= 0; i--) {
         _paginatorArray.push(this.totalPages - i);
       }
     }
+    _paginatorArray = _paginatorArray.filter(x => x>0);
     if (!_paginatorArray.includes(NaN)) this.paginatorArray = _paginatorArray;
   }
 }

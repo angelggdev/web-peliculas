@@ -27,7 +27,9 @@ export class NavBarComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigateByUrl(`/resultados/${this.userInput}/1`);
-    this.store.dispatch(searchMovie({ query: this.userInput, page: 1 }));
+    if(this.userInput){
+      this.router.navigateByUrl(`/resultados/${this.userInput}/1`);
+      this.store.dispatch(searchMovie({ query: this.userInput, page: 1 }));
+    }
   }
 }
