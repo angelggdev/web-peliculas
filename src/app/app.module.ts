@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { movieSearchReducer } from './store/movie-search/movie-search.reducer';
 import { MovieSearchEffects } from './store/movie-search/movie-search.effects';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MovieSearchEffects } from './store/movie-search/movie-search.effects';
     HomeComponent,
     CastMemberComponent,
     SearchResultsComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 class MovieDetailObject {
   movieDetail: MovieDetail;
   cast: MovieCast;
+  error?: string;
 }
 
 @Component({
@@ -27,6 +28,7 @@ export class MovieDetailComponent implements OnInit {
   loading = true;
   starsConfig: Array<string>;
   cast: Array<Artist>;
+  error = false;
 
   constructor(
     private store: Store<{ movieDetailReducer: MovieDetailObject }>,
@@ -41,12 +43,16 @@ export class MovieDetailComponent implements OnInit {
     this.store.dispatch(loadMovieDetails({ id: this.movieId }));
     this.store.dispatch(loadCast({ id: this.movieId }));
     this.store.select('movieDetailReducer').subscribe((data) => {
-      this.movieDetails = data.movieDetail;
-      this.starsConfig = this.movieService.getStarsConfig(
-        data.movieDetail?.vote_average
-      );
-      this.cast = data.cast?.cast;
-      this.loading = false;
+      if (data.error) {
+        this.error = true;
+      } else {
+        this.movieDetails = data.movieDetail;
+        this.starsConfig = this.movieService.getStarsConfig(
+          data.movieDetail?.vote_average
+        );
+        this.cast = data.cast?.cast;
+        this.loading = false;
+      }
     });
   }
 

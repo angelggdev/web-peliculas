@@ -13,5 +13,9 @@ export const billboardMoviesReducer = createReducer(
   on(loadBillboardMoviesSuccess, (state, { playingNow }) => ({
     ...state,
     playingNow,
+  })),
+  on(loadBillboardMoviesFailure, (state) => ({
+    ...state,
+    error: 'Oops, something went wrong!'
   }))
 );

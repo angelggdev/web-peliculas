@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { SearchResults } from 'src/app/models/search-results.model';
-import { searchMovieSuccess } from './movie-search.actions';
+import { searchMovieFailure, searchMovieSuccess } from './movie-search.actions';
 
 const initialState = {} as SearchResults;
 
@@ -9,5 +9,9 @@ export const movieSearchReducer = createReducer(
   on(searchMovieSuccess, (state, { searchResult }) => ({
     ...state,
     searchResult,
+  })),
+  on(searchMovieFailure, (state) => ({
+    ...state,
+    error: 'Oops, Something went wrong!'
   }))
 );
