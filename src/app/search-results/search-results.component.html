@@ -15,10 +15,10 @@
           >Previous</a
         >
       </li>
-      <li class="page-item" *ngIf="page > 2">
+      <li class="page-item" *ngIf="page > 2 && totalPages > 6">
         <a class="page-link" [href]="'/resultados/' + search + '/' + 1">1</a>
       </li>
-      <li class="page-item" *ngIf="page > 1">
+      <li class="page-item" *ngIf="page > 1 && totalPages > 6">
         <a
           class="page-link"
           [href]="
@@ -39,12 +39,12 @@
           >{{ x }}
         </a>
       </li>
-      <li class="page-item" *ngIf="page < totalPages - 6">
+      <li class="page-item" *ngIf="page < totalPages - 6 && totalPages > 6">
         <a class="page-link" [href]="'/resultados/' + search + '/' + (page + 6)"
           >...</a
         >
       </li>
-      <li class="page-item" *ngIf="page <= totalPages - 6">
+      <li class="page-item" *ngIf="(page <= totalPages - 6) && totalPages > 6">
         <a
           class="page-link"
           [href]="'/resultados/' + search + '/' + totalPages"
