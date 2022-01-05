@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SearchResults } from '../models/search-results.mode';
+import { SearchResults } from '../models/search-results.model';
 import { searchMovie } from '../store/movie-search/movie-search.actions';
 
 class MovieResultsObject {

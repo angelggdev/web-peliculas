@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Movie } from '../models/movie.model';
-import { PlayingNow } from '../models/playing_now';
+import { PlayingNow } from '../models/playing_now.model';
 import { MovieService } from '../services/movie.service';
 import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.actions';
 

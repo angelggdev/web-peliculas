@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { SearchResults } from 'src/app/models/search-results.mode';
+import { SearchResults } from 'src/app/models/search-results.model';
 import { searchMovieSuccess } from './movie-search.actions';
 
 const initialState = {} as SearchResults;
