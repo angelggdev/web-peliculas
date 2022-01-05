@@ -1,27 +1,69 @@
-# WebPeliculas
+# Web Peliculas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Angular project created using:
+- Bootstrap
+- The Move DataBase API
+- NgRx Store and NgRx Effects
 
-## Development server
+## Components
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Billboard Component
 
-## Code scaffolding
+This component uses a Bootstrap Carousel to display the billboard movies.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Home Component
 
-## Build
+Component that's displayed on the main route of the app, it renders the <strong>Billboard Component</strong> and the <strong>Movie List Component</strong> to show the Billboard Movies.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Movie Component
 
-## Running unit tests
+Component that renders a movie Card with the poster photo, title and rating of a movie.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Movie Detail Component
 
-## Running end-to-end tests
+Component that renders a card with the details of a movie (title, description, poster photo and rating) and maps an array of cast members, rendering one <strong>Cast Member Component</strong> for each Item.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Cast Member Component
 
-## Further help
+Component that renders a Card with the profile photo and name of a cast member.
+### Movie List
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Component that maps an array of movies and returns a <strong>Movie Component</strong> for each item.
+
+### Nav Bar
+
+Component that renders the navigation bar and contains a field to search movies.
+
+### Search Results
+
+Component that maps an array of movie search results and returns a <strong>Movie Component</strong> for each item.
+
+## Services
+
+### Movie Service
+
+This service contains the API calls and other functions:
+
+    - getBillboardMovies: function that returns an API call to get the billboard movies. It receives a page number as argument to allow the exploration of all the results.
+
+    -searchMovie: function that returns an API call to get the results of a movie search. It receives a string argument with the query for the search and a page number.
+
+    -getMovieDetails: function that returns an API call to get the details of a movie. It receives an id number as argument.
+
+    -getCast: function that returns an API call to get the cast members of a movie. It receives the movie Id as argument.
+
+    -getStarsConfig: function that returns an array of string that determines how the rating of each movie will be displayed.
+
+## Store
+
+### Billboard Movies
+
+Stores the billboard movies array.
+
+### Movie Details
+
+Stores the movie details object and the cast members array.
+
+### Movie Search
+
+Stores the movie search results array.

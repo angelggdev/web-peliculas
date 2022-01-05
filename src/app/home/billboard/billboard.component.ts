@@ -14,6 +14,7 @@ export class BillboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //this function navigates to the movie details, where the movie detail state will be handled
   getMovieDetails(id: number): void {
     this.router.navigateByUrl(`/pelicula/${id}`);
   }

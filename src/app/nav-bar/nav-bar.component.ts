@@ -22,10 +22,12 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //function to click on the logo and navigate to the main page
   goHome(): void {
     this.router.navigateByUrl('/');
   }
 
+  //on submit the app navigates to the search results and dispatches the search movie action from the store
   onSubmit() {
     if(this.userInput){
       this.router.navigateByUrl(`/resultados/${this.userInput}/1`);

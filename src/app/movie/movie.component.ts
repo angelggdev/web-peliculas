@@ -38,6 +38,7 @@ export class MovieComponent implements OnInit {
     return this.movieService.getStarsConfig(number);
   }
 
+  //navigation to the movie details and dispatch of the store action to load the movie details and the cast members
   getMovieDetails(id:number): void{
     this.router.navigateByUrl(`/pelicula/${id}`);
     this.store.dispatch(loadMovieDetails({id: this.movieId}));

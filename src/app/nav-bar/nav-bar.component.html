@@ -1,8 +1,12 @@
 <nav class="navbar navbar-light bg-light">
   <div class="navbar-container container-fluid">
+    <!-- logo -->
     <div class="navbar-brand" (click)="goHome()" style="cursor: pointer">
       <img src="../../assets//logo.svg" alt="logo" width="100px" />
     </div>
+    <!-- /// -->
+
+    <!-- search field -->
     <form class="d-flex" (ngSubmit)="onSubmit()">
       <input
         class="form-control me-2"
@@ -13,5 +17,6 @@
       />
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+    <!-- //// -->
   </div>
 </nav>

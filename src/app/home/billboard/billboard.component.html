@@ -1,4 +1,5 @@
 <div class="billboard-container">
+  <!-- Bootstrap carousel -->
   <div
     *ngIf="!loading; else spinner"
     id="carouselExampleIndicators"
@@ -6,6 +7,7 @@
     data-bs-ride="carousel"
   >
     <div class="billboard-indicators carousel-indicators">
+      <!-- for every item of the movieList array, a selector button will be displayed -->
       <button
         *ngFor="let movie of movieList; let i = index; first as isFirst"
         type="button"
@@ -17,12 +19,14 @@
       ></button>
     </div>
     <div class="carousel-inner">
+      <!-- For every movieList item a carousel-item is displayed -->
       <div
         class="billboard-item carousel-item"
         *ngFor="let movie of movieList; first as isFirst"
         [ngClass]="{ active: isFirst }"
         (click)="getMovieDetails(movie.id)"
       >
+      <!-- If the movie doesn't have an image to display, a placeholder image will be displayed -->
         <img
           [src]="
             movie.backdrop_path
@@ -60,6 +64,9 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+  <!-- ///////////// -->
+
+  <!-- Spinner  -->
   <ng-template #spinner>
     <div class="spinner-container">
       <div class="spinner-grow" role="status">
@@ -67,4 +74,5 @@
       </div>
     </div>
   </ng-template>
+  <!-- /////////// -->
 </div>

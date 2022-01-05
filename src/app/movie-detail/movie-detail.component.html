@@ -2,6 +2,7 @@
   <div class="card mb-3" style="max-width: 80%">
     <div class="row g-0">
       <div class="col-md-4">
+        <!-- If the Movie doesn't have a poster image a placeholder will be displayed -->
         <img
           [src]="
             movieDetails.poster_path
@@ -16,6 +17,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ movieDetails.title }}</h5>
           <div class="card-text" style="display: flex">
+            <!-- The starsConfg array is mapped, just as in the Movie Component -->
             <div *ngFor="let star of starsConfig">
               <svg
                 *ngIf="star === 'full'"
@@ -55,6 +57,7 @@
   </div>
   <div class="overflow-auto" style="max-width: 80%">
     <div style="display: flex">
+      <!-- for each cast member on the cast array a Cast Member Component is displayed -->
       <app-cast-member
         *ngFor="let artist of cast"
         [castMember]="artist"
@@ -62,6 +65,8 @@
     </div>
   </div>
 </div>
+
+<!-- Spinner -->
 <ng-template #spinner>
   <div class="spinner-container">
     <div class="spinner-grow" role="status">

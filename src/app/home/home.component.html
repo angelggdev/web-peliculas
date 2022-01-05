@@ -1,7 +1,14 @@
+<!-- carousel -->
 <app-billboard [movieList]="movieList" [loading]="loading"></app-billboard>
+<!-- ////// -->
+
 <div *ngIf="!loading; else spinner">
   <h2 class="movies-title">Películas</h2>
+
+  <!-- movie list -->
   <app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
+
+  <!-- paginator -->
   <div class="paginator">
     <ul class="pagination">
       <li class="page-item" [ngClass]="{ disabled: page === 1 }">
@@ -52,7 +59,11 @@
       </li>
     </ul>
   </div>
+  <!-- ////// -->
+
 </div>
+
+<!-- Spinner -->
 <ng-template #spinner>
   <div class="spinner-container">
     <div class="spinner-grow" role="status">

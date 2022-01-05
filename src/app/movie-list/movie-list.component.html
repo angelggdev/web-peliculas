@@ -1,4 +1,5 @@
 <div class="movie-list-container">
+  <!-- maps the movieList and for every item renders a Movie Component -->
   <app-movie
     *ngFor="let movie of movieList"
     [posterPath]="movie.poster_path ? movie.poster_path : ''"

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Movie } from '../models/movie.model';
 import { PlayingNow } from '../models/playing_now';
+import { MovieService } from '../services/movie.service';
 import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.actions';
 
 class BillboardMovieObject {
@@ -22,10 +23,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private store: Store<{ playingNow: BillboardMovieObject }>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private movieService: MovieService
   ) {}
 
   ngOnInit(): void {
+    //the component gets the page param from the url and loads the billboard movies of that page
     this.route.params.subscribe((data) => {
       data['page'] && (this.page = parseInt(data['page']));
     });
@@ -33,22 +36,9 @@ export class HomeComponent implements OnInit {
     this.store.select('playingNow').subscribe((data) => {
       this.movieList = data.playingNow?.results;
       this.totalPages = data.playingNow?.total_pages;
-      this.constructPaginator();
+      this.paginatorArray = this.movieService.constructPaginator(this.page, this.totalPages);
       this.loading = false;
     });
   }
 
-  constructPaginator() {
-    let _paginatorArray: Array<number> = [];
-    if (this.page < this.totalPages - 6) {
-      for (let i = 0; i < 6; i++) {
-        _paginatorArray.push(this.page + i);
-      }
-    } else {
-      for (let i = 6; i >= 0; i--) {
-        _paginatorArray.push(this.totalPages - i);
-      }
-    }
-    if (!_paginatorArray.includes(NaN)) this.paginatorArray = _paginatorArray;
-  }
 }

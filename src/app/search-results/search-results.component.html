@@ -2,9 +2,11 @@
 
 <hr style="height: 2px; color: black" />
 
+<!-- Renders the Movie List Component passing the search results -->
 <app-movie-list [movieList]="movieList" [loading]="loading"> </app-movie-list>
 
 <div>
+  <!-- Paginator -->
   <div class="paginator" *ngIf="!loading ; else spinner">
     <ul class="pagination">
       <li class="page-item" [ngClass]="{ disabled: (page === 1) || !totalPages}">
@@ -15,10 +17,10 @@
           >Previous</a
         >
       </li>
-      <li class="page-item" *ngIf="page > 2 && totalPages > 6">
+      <li class="page-item" *ngIf="page > 2 && totalPages > 7">
         <a class="page-link" [href]="'/resultados/' + search + '/' + 1">1</a>
       </li>
-      <li class="page-item" *ngIf="page > 1 && totalPages > 6">
+      <li class="page-item" *ngIf="page > 1 && totalPages > 7">
         <a
           class="page-link"
           [href]="
@@ -39,12 +41,12 @@
           >{{ x }}
         </a>
       </li>
-      <li class="page-item" *ngIf="page < totalPages - 6 && totalPages > 6">
+      <li class="page-item" *ngIf="page < totalPages - 6 && totalPages > 7">
         <a class="page-link" [href]="'/resultados/' + search + '/' + (page + 6)"
           >...</a
         >
       </li>
-      <li class="page-item" *ngIf="(page <= totalPages - 6) && totalPages > 6">
+      <li class="page-item" *ngIf="(page <= totalPages - 6) && totalPages > 7">
         <a
           class="page-link"
           [href]="'/resultados/' + search + '/' + totalPages"
@@ -61,6 +63,9 @@
       </li>
     </ul>
   </div>
+  <!-- ///// -->
+
+  <!-- Spinner -->
   <ng-template #spinner>
     <div class="spinner-container">
       <div class="spinner-grow" role="status">
