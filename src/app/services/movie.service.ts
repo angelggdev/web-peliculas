@@ -15,7 +15,6 @@ export class MovieService {
     return this.http.get(environment.apiUrl + 'movie/now_playing', {
       params: new HttpParams()
         .set('api_key', environment.api_key)
-        .set('language', 'es')
         .set('page', page),
     }) as Observable<PlayingNow>;
   }
@@ -26,7 +25,6 @@ export class MovieService {
       params: new HttpParams()
         .set('query', searchQuery)
         .set('api_key', environment.api_key)
-        .set('language', 'es')
         .set('page', page),
     });
   }
@@ -36,7 +34,6 @@ export class MovieService {
     return this.http.get(environment.apiUrl + `movie/${id}`, {
       params: new HttpParams()
         .set('api_key', environment.api_key)
-        .set('language', 'es'),
     });
   }
 
@@ -45,7 +42,6 @@ export class MovieService {
     return this.http.get(environment.apiUrl + `movie/${id}/credits`, {
       params: new HttpParams()
         .set('api_key', environment.api_key)
-        .set('language', 'es'),
     });
   }
 
