@@ -2,7 +2,7 @@
 
 Angular project created using:
 - Bootstrap
-- The Move DataBase API
+- The Movie DataBase API
 - NgRx Store and NgRx Effects
 
 ## Components
