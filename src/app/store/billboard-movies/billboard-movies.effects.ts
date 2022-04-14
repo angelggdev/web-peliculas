@@ -11,19 +11,20 @@ import {
 
 @Injectable()
 export class BillboardMoviesEffects {
-  loadBillboardMovies$ = createEffect(() => {
-    return this.actions$.pipe(
+  
+  loadBillboardMovies$ = createEffect(() => 
+    this.actions$.pipe(
       ofType(loadBillboardMovies),
-      mergeMap(({ page }) => {
-        return this.movieService.getBillboardMovies(page).pipe(
+      mergeMap(({ page }) =>
+        this.movieService.getBillboardMovies(page).pipe(
           map((playingNow) =>
             loadBillboardMoviesSuccess({ playingNow: playingNow })
           ),
           catchError(() => of(loadBillboardMoviesFailure()))
-        );
-      })
-    );
-  });
+        ),
+      ),
+    ),
+  );
 
   constructor(private actions$: Actions, private movieService: MovieService) {}
 }

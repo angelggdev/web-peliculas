@@ -4,7 +4,7 @@ import {
   loadBillboardMoviesFailure,
   loadBillboardMoviesSuccess,
 } from './billboard-movies.actions';
-import { Movie } from '../../models/movie.model';
+import { Movie } from '../../models/movies.model';
 
 const initialState = [] as Array<Movie>;
 

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { PlayingNow } from 'src/app/models/playing_now.model';
+import { PlayingNow } from 'src/app/models/movies.model';
 
 export const loadBillboardMovies = createAction(
   '[BillboardMovies] Load BillboardMovies',

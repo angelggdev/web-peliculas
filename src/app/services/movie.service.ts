@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PlayingNow } from '../models/playing_now.model';
+import { Star, PlayingNow } from '../models/movies.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +10,14 @@ import { PlayingNow } from '../models/playing_now.model';
 export class MovieService {
   constructor(private http: HttpClient) {}
 
-  //this functio returns an API call for the billboard movies
   getBillboardMovies(page: number): Observable<PlayingNow> {
-    return this.http.get(environment.apiUrl + 'movie/now_playing', {
+    return this.http.get<PlayingNow>(environment.apiUrl + 'movie/now_playing', {
       params: new HttpParams()
         .set('api_key', environment.api_key)
         .set('page', page),
-    }) as Observable<PlayingNow>;
+    });
   }
 
-  //this function returns the API call for the search results
   searchMovie(searchQuery: string, page: number): Observable<any> {
     return this.http.get(environment.apiUrl + 'search/movie', {
       params: new HttpParams()
@@ -29,7 +27,6 @@ export class MovieService {
     });
   }
 
-  //this function returns the API call for the details of a movie
   getMovieDetails(id: number): Observable<any> {
     return this.http.get(environment.apiUrl + `movie/${id}`, {
       params: new HttpParams()
@@ -37,7 +34,6 @@ export class MovieService {
     });
   }
 
-  //this function returns the API call for the cast members of a movie
   getCast(id: number): Observable<any> {
     return this.http.get(environment.apiUrl + `movie/${id}/credits`, {
       params: new HttpParams()
@@ -46,7 +42,7 @@ export class MovieService {
   }
 
   /*  
-  this function return an array of string to determine how the rating stars will be displayed
+  this function returns an array of strings to determine how the rating stars will be displayed
   - half-full will return a half-full star 
   - full will return a full star
   - blank won't return anything  
@@ -55,8 +51,8 @@ export class MovieService {
     ['full','full','full','full','full','full','full','half-full','blank','blank']
   to display 7 full stars and a half-star
   */
-  getStarsConfig(number: number): Array<string> {
-    let starsArray: Array<string> = [];
+  getStarsConfig(number: number): Array<Star> {
+    let starsArray: Array<Star> = [];
 
     for (let i = 0; i < 10; i++) {
       if (number <= i - 0.4 && number >= i - 0.6) {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Movie } from '../models/movie.model';
-import { SearchResults } from '../models/search-results.model';
+import { Movie, SearchResults } from '../models/movies.model';
 import { searchMovie } from '../store/movie-search/movie-search.actions';
 import { MovieService } from '../services/movie.service';
 

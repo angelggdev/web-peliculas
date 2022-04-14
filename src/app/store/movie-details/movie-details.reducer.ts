@@ -5,7 +5,7 @@ import {
   loadMovieDetailsFailure,
   loadCastFailure,
 } from './movie-details.actions';
-import { MovieDetail } from 'src/app/models/movie-detail.model';
+import { MovieDetail } from 'src/app/models/movies.model';
 
 const initialState = {} as MovieDetail;
 

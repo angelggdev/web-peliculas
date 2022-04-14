@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Artist } from '../models/artist.model';
-import { MovieCast } from '../models/movie-cast.model';
-import { MovieDetail } from '../models/movie-detail.model';
+import { Artist, MovieCast, MovieDetail } from '../models/movies.model';
 import { MovieService } from '../services/movie.service';
 import {
   loadCast,

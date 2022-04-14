@@ -11,17 +11,18 @@ import {
 
 @Injectable()
 export class MovieSearchEffects {
-  searchMovie$ = createEffect(() => {
-    return this.actions$.pipe(
+  
+  searchMovie$ = createEffect(() => 
+    this.actions$.pipe(
       ofType(searchMovie),
-      mergeMap(({ query, page }) => {
-        return this.movieService.searchMovie(query, page).pipe(
+      mergeMap(({ query, page }) =>
+        this.movieService.searchMovie(query, page).pipe(
           map((searchResult) => searchMovieSuccess({ searchResult })),
           catchError(() => of(searchMovieFailure()))
-        );
-      })
-    );
-  });
+        ),
+      ),
+    ),
+  );
 
   constructor(private actions$: Actions, private movieService: MovieService) {}
 }

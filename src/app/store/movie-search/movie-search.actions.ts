@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { SearchResults } from 'src/app/models/search-results.model';
+import { SearchResults } from 'src/app/models/movies.model';
 
 export const searchMovie = createAction(
   '[MovieSearch] SearchMovie',

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SearchResults } from '../models/search-results.model';
+import { SearchResults } from '../models/movies.model';
 import { searchMovie } from '../store/movie-search/movie-search.actions';
 
 class MovieResultsObject {
@@ -12,15 +12,13 @@ class MovieResultsObject {
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
   userInput: string;
 
   constructor(
     private router: Router,
     private store: Store<{ searchResult: MovieResultsObject }>
   ) {}
-
-  ngOnInit(): void {}
 
   //function to click on the logo and navigate to the main page
   goHome(): void {

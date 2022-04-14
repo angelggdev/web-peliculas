@@ -14,29 +14,30 @@ import {
 
 @Injectable()
 export class MovieDetailsEffects {
-  loadMovieDetails$ = createEffect(() => {
-    return this.actions$.pipe(
+  
+  loadMovieDetails$ = createEffect(() => 
+    this.actions$.pipe(
       ofType(loadMovieDetails),
-      mergeMap(({ id }) => {
-        return this.movieService.getMovieDetails(id).pipe(
+      mergeMap(({ id }) => 
+        this.movieService.getMovieDetails(id).pipe(
           map((movieDetail) => loadMovieDetailsSuccess({ movieDetail })),
           catchError(() => of(loadMovieDetailsFailure()))
-        );
-      })
-    );
-  });
+        ),
+      ),
+    ),
+  );
 
-  loadCastMembers$ = createEffect(() => {
-    return this.actions$.pipe(
+  loadCastMembers$ = createEffect(() =>
+    this.actions$.pipe(
       ofType(loadCast),
-      mergeMap(({ id }) => {
-        return this.movieService.getCast(id).pipe(
+      mergeMap(({ id }) => 
+        this.movieService.getCast(id).pipe(
           map((cast) => loadCastSuccess({ cast })),
           catchError(() => of(loadCastFailure()))
-        );
-      })
-    );
-  });
+        ),
+      ),
+    ),
+  );
 
   constructor(private actions$: Actions, private movieService: MovieService) {}
 }
