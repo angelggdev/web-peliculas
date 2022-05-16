@@ -4,11 +4,8 @@ import { Store } from '@ngrx/store';
 import { Movie, PlayingNow } from '../models/movies.model';
 import { MovieService } from '../services/movie.service';
 import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.actions';
+import { BillboardMoviesState } from '../store/billboard-movies/billboard-movies.reducer';
 
-class BillboardMovieObject {
-  playingNow: PlayingNow;
-  error?: 'string';
-}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,22 +20,38 @@ export class HomeComponent implements OnInit {
   error = false;
 
   constructor(
-    private store: Store<{ playingNow: BillboardMovieObject }>,
+    private store: Store<{ billboardMovies: BillboardMoviesState }>,
     private route: ActivatedRoute,
     private movieService: MovieService
   ) {}
 
   ngOnInit(): void {
+    this.setMovieData();
+  }
+
+  private setMovieData(): void {
+    this.getUrlParams();
+    this.loadBillobardMovies();
+    this.selectBillboardMovies();
+  }
+
+  private getUrlParams(): void {
     //the component gets the page param from the url and loads the billboard movies of that page
     this.route.params.subscribe((data) => {
       data['page'] && (this.page = parseInt(data['page']));
     });
+  }
+
+  private loadBillobardMovies(): void {
     this.store.dispatch(loadBillboardMovies({ page: this.page }));
-    this.store.select('playingNow').subscribe((data) => {
-      if (data.error) {
+  }
+
+  private selectBillboardMovies(): void {
+    this.store.select('billboardMovies').subscribe((data) => {
+      if (data?.error) {
         this.error = true;
-      } else {
-        this.movieList = data.playingNow?.results;
+      } else if (data?.playingNow) {
+        this.movieList = data.playingNow.results;
         this.totalPages = data.playingNow?.total_pages;
         this.paginatorArray = this.movieService.constructPaginator(
           this.page,
@@ -48,4 +61,5 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
 }

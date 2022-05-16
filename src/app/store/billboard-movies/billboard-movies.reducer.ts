@@ -1,12 +1,18 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import {
-  loadBillboardMovies,
   loadBillboardMoviesFailure,
   loadBillboardMoviesSuccess,
 } from './billboard-movies.actions';
-import { Movie } from '../../models/movies.model';
+import { PlayingNow } from '../../models/movies.model';
 
-const initialState = [] as Array<Movie>;
+export interface BillboardMoviesState {
+  playingNow: PlayingNow;
+  error?: string;
+}
+
+const initialState: BillboardMoviesState = {
+  playingNow: {} as PlayingNow,
+};
 
 export const billboardMoviesReducer = createReducer(
   initialState,

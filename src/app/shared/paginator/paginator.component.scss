@@ -1,0 +1,12 @@
+.paginator{
+  display:flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin: 20px;
+}
+
+@media (max-width: 600px) {
+  .paginator{
+      font-size: 9.5px;
+  }
+}

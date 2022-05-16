@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { movieSearchReducer } from './store/movie-search/movie-search.reducer';
 import { MovieSearchEffects } from './store/movie-search/movie-search.effects';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './shared/error/error.component';
+import { PaginatorComponent } from './shared/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ErrorComponent } from './error/error.component';
     CastMemberComponent,
     SearchResultsComponent,
     ErrorComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { ErrorComponent } from './error/error.component';
       MovieSearchEffects,
     ]),
     StoreModule.forRoot({
-      playingNow: billboardMoviesReducer,
+      billboardMovies: billboardMoviesReducer,
       searchResult: movieSearchReducer,
       movieDetailReducer,
     }),
