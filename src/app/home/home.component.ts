@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Movie, PlayingNow } from '../models/movies.model';
+import { skip } from 'rxjs';
+import { Movie } from '../models/movies.model';
 import { MovieService } from '../services/movie.service';
 import { loadBillboardMovies } from '../store/billboard-movies/billboard-movies.actions';
 import { BillboardMoviesState } from '../store/billboard-movies/billboard-movies.reducer';
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   private selectBillboardMovies(): void {
-    this.store.select('billboardMovies').subscribe((data) => {
+    this.store.select('billboardMovies').pipe(skip(1)).subscribe((data) => {
       if (data?.error || !data?.playingNow?.results?.length) {
         this.error = true;
       } else if (data?.playingNow) {
