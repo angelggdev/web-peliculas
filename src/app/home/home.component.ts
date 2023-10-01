@@ -48,9 +48,10 @@ export class HomeComponent implements OnInit {
 
   private selectBillboardMovies(): void {
     this.store.select('billboardMovies').subscribe((data) => {
-      if (data?.error) {
+      if (data?.error || !data?.playingNow?.results?.length) {
         this.error = true;
       } else if (data?.playingNow) {
+        this.error = false;
         this.movieList = data.playingNow.results;
         this.totalPages = data.playingNow?.total_pages;
         this.paginatorArray = this.movieService.constructPaginator(
